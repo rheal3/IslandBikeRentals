@@ -1,4 +1,4 @@
-# T4A2-A Island Bike Rentals
+# T4A2-A: Island Bike Rentals
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -49,14 +49,34 @@
 <!-- - As _someone who visits the island often_ I want my details to be stored so I don't have to fill out a form each time. -->
 
 ## Wireframes
+### Customer 
 **Home Page**
 ![](./docs/wireframes/home.png)
+
 **Bike Rental Form**
+- "Continue to Payment" sends user to the bike payment form page.
 ![](./docs/wireframes/rent.png)
+
 **Bike Payment Form**
+- After clicking the "Pay $##" button the user is redirected to the successful rental page where they will be given a reference number.
 ![](./docs/wireframes/payment.png)
+
 **Successful Rental Page**
 ![](./docs/wireframes/rent_success.png)
+
+### Admin
+**Login**
+- Accessed from the top right hand corner of any page. 
+- The login screen shows above the current screen that the user is on.
+![](./docs/wireframes/login.png)
+
+**Bookings**
+![](./docs/wireframes/bookings.png)
+
+**Single Booking**
+![](./docs/wireframes/single_booking.png)
+
+
 
 ## Dataflow Diagram
 <!-- ![])(./docs/diagrams/) -->
