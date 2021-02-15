@@ -91,7 +91,7 @@
 
 
 ## Dataflow Diagram
-<!-- ![])(./docs/diagrams/) -->
+![](./docs/diagrams/dataflow.png)
 
 ## Application Architecture Diagram
 <!-- ![])(./docs/diagrams/) -->
@@ -106,5 +106,8 @@ Note: All tasks were assigned to myself as I was the only person working on this
 ![](./docs/notion/2021-02-11.png)
 **12 February 2021**
 ![](./docs/notion/2021-02-12.png)
-
+**13 February 2021**
+![](./docs/notion/2021-02-13.png)
+**15 February 2021**
+![](./docs/notion/2021-02-15.png)
 
