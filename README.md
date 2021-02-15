@@ -41,10 +41,22 @@
 <!-- useful examples of how a project can be used. Additional screenshots, code examples and demos -->
 
 ## User Stories
+<!-- organize by feature -->
+**login**
+- As _admin_ I want to be able to login so I can securely look at bookings.
+
+**rental form**
+- As a _holiday goer_ I want a simple rental form so I can have a stress free way to rent a bicycle.
 - As a _holiday goer_ I want a simple stress free way to rent a bicycle so I can easily get around and explore the island.
 - As a _holiday goer_ I want a straightforward rental system so I can focus on relaxing and having fun.
 - As a _holiday goer_ I want a quick and easy rental because I'm already overwhelmed by my holiday planning.
+
+**payment**
 - As a _holiday goer_ I want to be able to pay beforehand so I can grab and go my bike without any hassle.
+
+**bookings**
+- As _admin_ I want to be able to view all bookings so I can get people their bikes.
+
 <!-- - As an _island local_ I want a fun way to get around the island so I can have a good time. -->
 <!-- - As _someone who visits the island often_ I want my details to be stored so I don't have to fill out a form each time. -->
 
