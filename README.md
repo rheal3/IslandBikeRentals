@@ -42,9 +42,6 @@
 
 ## User Stories
 <!-- organize by feature -->
-**login**
-- As _admin_ I want to be able to login so I can securely look at bookings.
-
 **rental form**
 - As a _holiday goer_ I want a simple rental form so I can have a stress free way to rent a bicycle.
 - As a _holiday goer_ I want a simple stress free way to rent a bicycle so I can easily get around and explore the island.
@@ -53,6 +50,9 @@
 
 **payment**
 - As a _holiday goer_ I want to be able to pay beforehand so I can grab and go my bike without any hassle.
+
+**login**
+- As _admin_ I want to be able to login so I can securely look at bookings.
 
 **bookings**
 - As _admin_ I want to be able to view all bookings so I can get people their bikes.
@@ -94,7 +94,7 @@
 ![](./docs/diagrams/dataflow.png)
 
 ## Application Architecture Diagram
-<!-- ![])(./docs/diagrams/) -->
+![](./docs/diagrams/aad.png)
 
 ## Project Management
 
@@ -110,4 +110,9 @@ Note: All tasks were assigned to myself as I was the only person working on this
 ![](./docs/notion/2021-02-13.png)
 **15 February 2021**
 ![](./docs/notion/2021-02-15.png)
+**16 February 2021**
+![](./docs/notion/2021-02-16.png)
+**17 February 2021**
+![](./docs/notion/2021-02-17.png)
+
 
