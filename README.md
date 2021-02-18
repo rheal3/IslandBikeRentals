@@ -51,14 +51,21 @@
 **payment**
 - As a _holiday goer_ I want to be able to pay beforehand so I can grab and go my bike without any hassle.
 
+**validation**
+- As a _holiday goer_ I want to be able to keep track of my rentals.
+- As a _holiday goer_ I want to receive an email from my booking with a reference number & the details of my booking so I can keep track of my rentals.
+
 **login**
 - As _admin_ I want to be able to login so I can securely look at bookings.
 
 **bookings**
 - As _admin_ I want to be able to view all bookings so I can get people their bikes.
+- As _admin_ I want to be able to modify bookings because life happens and people change their minds.
+- As _admin_ I want to be able to check off bookings once they are complete so they don't pile up in the bookings list.
 
-<!-- - As an _island local_ I want a fun way to get around the island so I can have a good time. -->
-<!-- - As _someone who visits the island often_ I want my details to be stored so I don't have to fill out a form each time. -->
+**for a later time**
+- As a _holiday goer_ who travels to the island often I want to be able to login so that I can have my details saved for an easier booking experience.
+- As _someone who visits the island often_ I want my details to be stored so I don't have to fill out a form each time.
 
 ## Wireframes
 ### Customer 
