@@ -114,5 +114,7 @@ Note: All tasks were assigned to myself as I was the only person working on this
 ![](./docs/notion/2021-02-16.png)
 **17 February 2021**
 ![](./docs/notion/2021-02-17.png)
+**18 February 2021**
+![](./docs/notion/2021-02-18.png)
 
 
