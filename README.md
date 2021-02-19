@@ -29,7 +29,7 @@
 
 Island Bike Rentals is a holiday goers dream come true. The Super73 Electric Bikes are a fun and exciting way to get around the island. They are great to ride through the town and on the lucious island roads and sandy beaches. This booking system is a stress free way to book your holiday fun and the bikes are a great way to tour the island!
 
-![](docs/images/super73beach.png)
+![](docs/images/super73.png)
 
 <!-- about the project -->
 <!-- ### Built With -->
@@ -105,8 +105,19 @@ Island Bike Rentals is a holiday goers dream come true. The Super73 Electric Bik
 ## Dataflow Diagram
 ![](./docs/diagrams/dataflow.png)
 
+1. Customer enters personal details into rental form. 
+2. Customer enters payment details into payment form.
+3. If payment form is accepted, booking is validated. Customer is sent a booking result receipt in the form of an email. Booking details are stored in database.
+4. Admin enters login details, login details are verified in database, if the account is confirmed authentication is returned and the admin is logged in.
+5. Admin accesses bookings index, authentication details are sent with request. Database is queried and all booking data is returned.
+6. Admin accesses single booking through booking index. Database is queried and booking data for booking is returned.
+
+
 ## Application Architecture Diagram
 ![](./docs/diagrams/aad.png)
+
+User accesses front end which then connects to backend Flask Server ec2 instance and queries PostgreSQL database in seperate ec2 instance within a private subnet.
+<!-- ???docker??? -->
 
 ## Project Management
 
