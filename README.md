@@ -5,18 +5,18 @@
   <ol>
     <li>
       <a href="#overview">Overview</a>
-      <ul>
+      <!-- <ul>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
+      </ul> -->
     </li>
-    <li>
+    <!-- <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Usage</a></li> -->
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#wireframes">Wireframes</a></li>
     <li><a href="#dataflow-diagram">Dataflow Diagram</a></li>
@@ -26,18 +26,23 @@
 </details>
 
 ## Overview
+
+Island Bike Rentals is a holiday goers dream come true. The Super73 Electric Bikes are a fun and exciting way to get around the island. They are great to ride through the town and on the lucious island roads and sandy beaches. This booking system is a stress free way to book your holiday fun and the bikes are a great way to tour the island!
+
+![](docs/images/super73beach.png)
+
 <!-- about the project -->
-### Built With
+<!-- ### Built With -->
 <!-- list any major frameworks that you built your project using (bootstrap...) -->
 
-## Getting Started
+<!-- ## Getting Started -->
 <!-- instructions on setting up your project locally -->
-### Prerequisites
+<!-- ### Prerequisites -->
 <!-- list things you need to use the software and how to install them -->
-### Installation
+<!-- ### Installation -->
 <!-- clone repo... -->
 
-## Usage
+<!-- ## Usage -->
 <!-- useful examples of how a project can be used. Additional screenshots, code examples and demos -->
 
 ## User Stories
@@ -105,7 +110,7 @@
 
 ## Project Management
 
-This project was managed through Notion. 
+This project was managed through [Notion](https://www.notion.so/3872ca07418b41469210b23a26106869?v=6bbc9fcef49a419c8dc72182744d628b). 
 
 Note: All tasks were assigned to myself as I was the only person working on this project. :)
 
@@ -123,5 +128,5 @@ Note: All tasks were assigned to myself as I was the only person working on this
 ![](./docs/notion/2021-02-17.png)
 **18 February 2021**
 ![](./docs/notion/2021-02-18.png)
-
-
+**19 February 2021**
+![](./docs/notion/2021-02-19.png)
