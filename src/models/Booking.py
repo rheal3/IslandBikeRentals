@@ -12,4 +12,5 @@ class Booking(db.Model):
     booking_date = db.Column(db.String, nullable=False)
     collection_time = db.Column(db.String, nullable=False)
     return_time = db.Column(db.String, nullable=False)
-    
+
+    # payment = db.Column(db.Integer, db.ForeignKey("payments.id"))

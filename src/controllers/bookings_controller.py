@@ -1,7 +1,11 @@
 from models.Booking import Booking
+from models.Payment import Payment
 from schemas.BookingSchema import booking_schema, bookings_schema
+from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
 from flask import Blueprint, request, jsonify
+from sqlalchemy.orm import joinedload
+
 
 bookings = Blueprint("bookings", __name__, url_prefix="/bookings")
 
@@ -10,7 +14,10 @@ def booking_index():
     """
     Returns index of all bookings.
     """
+    # bookings = Booking.query.options(joinedload("payment")).all()
     bookings = Booking.query.all()
+    # payments = Payment.query.all()
+    # return jsonify(payments_schema.dump(payments))
     return jsonify(bookings_schema.dump(bookings))
 
 @bookings.route("/", methods=["POST"])
@@ -33,7 +40,9 @@ def booking_create():
     db.session.add(new_booking)
     db.session.commit()
     return jsonify(booking_schema.dump(new_booking))
+
     # redirect to payment "/bookings/payment" without commiting until payment confirmation
+    # returns booking details and sends to booking_payment??
     
 
 @bookings.route("/<int:id>", methods=["GET"])
@@ -67,5 +76,16 @@ def booking_update(id):
     db.session.commit()
     return jsonify(booking_schema.dump(booking[0]))
 
+# redirect from "/" POST method ??
+@bookings.route("/payment", methods=["POST"])
+def booking_payment():
+    payment_fields = payment_schema.load(request.json)
 
-# bookings/payment
+    new_payment = Payment()
+    new_payment.full_amount_due = payment_fields["full_amount_due"]
+    new_payment.upfront_amount_paid = payment_fields["upfront_amount_paid"]
+    new_payment.remainder_due = payment_fields["remainder_due"]
+
+    db.session.add(new_payment)
+    db.session.commit()
+    return jsonify(payment_schema.dump(new_payment))
