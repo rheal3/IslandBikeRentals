@@ -19,6 +19,7 @@
     <li><a href="#usage">Usage</a></li> -->
     <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#wireframes">Wireframes</a></li>
+    <li><a href="#dataflow-diagram">Database Diagram</a></li>
     <li><a href="#dataflow-diagram">Dataflow Diagram</a></li>
     <li><a href="#application-architecture-diagram">Application Architecture Diagram</a></li>
     <li><a href="#project-management">Project Management</a></li>
@@ -100,7 +101,8 @@ Island Bike Rentals is a holiday goers dream come true. The Super73 Electric Bik
 **Single Booking**
 ![](./docs/wireframes/single_booking.png)
 
-
+## Database Diagram
+![](./docs/diagrams/database.png)
 
 ## Dataflow Diagram
 ![](./docs/diagrams/dataflow.png)
