@@ -7,4 +7,4 @@ def home_page():
     """
     Returns simple home page.
     """
-    return "Island Bike Rentals"
+    return render_template("home_page.html")
