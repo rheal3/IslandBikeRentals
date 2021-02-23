@@ -13,4 +13,6 @@ class Booking(db.Model):
     collection_time = db.Column(db.String, nullable=False)
     return_time = db.Column(db.String, nullable=False)
 
-    # payment = db.Column(db.Integer, db.ForeignKey("payments.id"))
+    payment = db.relationship("Payment", backref="booking", cascade="all, delete")
+
+    # payment_id = db.Column(db.Integer, db.ForeignKey("payments.id"), nullable=False)

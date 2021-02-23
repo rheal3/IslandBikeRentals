@@ -8,4 +8,6 @@ class Payment(db.Model):
     upfront_amount_paid = db.Column(db.String, nullable=False)
     remainder_due = db.Column(db.Integer, nullable=False)  
 
-    # booking = db.relationship("Booking", backref="payment", lazy="dynamic")
+    booking_id = db.Column(db.Integer, db.ForeignKey("bookings.id"), nullable=False)
+
+    # booking = db.relationship("Booking", backref="payment", cascade="all, delete")

@@ -49,6 +49,7 @@ def seed_db():
     p1.full_amount_due = 150.00
     p1.upfront_amount_paid = "deposit"
     p1.remainder_due = 100.00
+    p1.booking_id = 1
 
     db.session.add(p1)
 
@@ -56,6 +57,8 @@ def seed_db():
     p2.full_amount_due = 120.00
     p2.upfront_amount_paid = "full"
     p2.remainder_due = 0.00
+    p2.booking_id = 2
+
 
     db.session.add(p2)
 

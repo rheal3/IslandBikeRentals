@@ -33,6 +33,7 @@ def booking_create():
     db.session.add(new_booking)
     db.session.commit()
     return jsonify(booking_schema.dump(new_booking))
+    # return redirect(url_for("rent.booking_payment"))
 
 @rent.route("/payment", methods=["POST"])
 def booking_payment():
@@ -46,6 +47,7 @@ def booking_payment():
     db.session.add(new_payment)
     db.session.commit()
     return jsonify(payment_schema.dump(new_payment))
+    # return redirect(url_for("rent.booking_success"))
 
 @rent.route("/success", methods=["GET"])
 def booking_success():

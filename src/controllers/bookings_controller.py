@@ -3,7 +3,7 @@ from models.Payment import Payment
 from schemas.BookingSchema import booking_schema, bookings_schema
 from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from sqlalchemy.orm import joinedload
 
 
@@ -15,7 +15,10 @@ def booking_index():
     Returns index of all bookings.
     """
     bookings = Booking.query.all()
-    return jsonify(bookings_schema.dump(bookings))
+    # payments = Payment.query.all() # when page is rendered send both bookings & payments
+    # bookings = Booking.query.options(joinedload("payment")).all()
+    # return jsonify(bookings_schema.dump(bookings))
+    return render_template("bookings_index.html", bookings=bookings)
 
     # payments = Payment.query.all()
     # return jsonify(payments_schema.dump(payments))
