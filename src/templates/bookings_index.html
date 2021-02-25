@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content%}        
+    {% for booking in bookings %}
+        <h3>{{booking.first_name}} {{booking.last_name}}</h3>
+        <h4>{{booking.phone}}</h4>
+        <h4>{{booking.email}}</h4>
+        <h4>{{booking.num_participants}}</h4>
+        <a href="{{ url_for('payments.payment_show', id=booking.id) }}">Payment details</a>
+        <br><br><br>
+    {% endfor %}
+{% endblock %}

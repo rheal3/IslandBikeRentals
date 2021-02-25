@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block content%}        
+    <h3>Full Amount Due: {{payment.full_amount_due}}</h3>
+    <h4>Upfront Amount Paid: {{payment.upfront_amount_paid}}</h4>
+    <h4>Remainder Due: {{payment.remainder_due}}</h4>
+    <br>
+{% endblock %}

@@ -123,7 +123,9 @@ User accesses front end which then connects to backend Flask Server ec2 instance
 
 ## Project Management
 
-This project was managed through [Notion](https://www.notion.so/3872ca07418b41469210b23a26106869?v=6bbc9fcef49a419c8dc72182744d628b). 
+This project was managed through Notion.
+- [T4A2-A](https://www.notion.so/3872ca07418b41469210b23a26106869?v=6bbc9fcef49a419c8dc72182744d628b)
+- [T4A2-B](https://www.notion.so/2e265d85058c4f4294840492f8e12cd4?v=8a146125c84a4eadbd150c974caad7af)
 
 Note: All tasks were assigned to myself as I was the only person working on this project. :)
 
