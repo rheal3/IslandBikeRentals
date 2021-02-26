@@ -2,6 +2,7 @@ import os
 
 class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = "bluefishpurple"
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
