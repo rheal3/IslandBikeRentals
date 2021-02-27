@@ -12,6 +12,7 @@ class Booking(db.Model):
     booking_date = db.Column(db.String, nullable=False)
     collection_time = db.Column(db.String, nullable=False)
     return_time = db.Column(db.String, nullable=False)
+    rental_complete = db.Column(db.Boolean, default=False)
 
     payment = db.relationship("Payment", backref="booking", cascade="all, delete")
 

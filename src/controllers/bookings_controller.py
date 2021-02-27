@@ -15,15 +15,8 @@ def booking_index():
     Returns index of all bookings.
     """
     bookings = Booking.query.order_by(Booking.booking_date.asc()).all()
-    print(bookings)
-    # payments = Payment.query.all() # when page is rendered send both bookings & payments
-    # bookings = Booking.query.options(joinedload("payment")).all()
     # return jsonify(bookings_schema.dump(bookings))
-    return render_template("bookings_index.html", bookings=bookings)
-
-    # payments = Payment.query.all()
-    # return jsonify(payments_schema.dump(payments))
-    
+    return render_template("bookings_index.html", bookings=bookings)    
 
 @bookings.route("/<int:id>", methods=["GET"])
 def booking_show(id):
