@@ -6,12 +6,20 @@
         <h3>Log in</h3>
         <div>
             <form action="{{ url_for('auth.auth_login') }}" method="POST">
-                <input type="text" name="username" placeholder="Username" autofocus="">
-                <input type="password" name="password" placeholder="Password">
-                <button>Log in</button>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="username" nameid="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                 <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+
             </form>
         </div>
         <br/>
         <a href="home_page.html"><button>Cancel</button></a>
     </div>
 {% endblock %}
+
