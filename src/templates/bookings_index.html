@@ -1,12 +1,36 @@
 {% extends "layout.html" %}
 
 {% block content%}        
-    {% for booking in bookings %}
-        <h3>{{booking.first_name}} {{booking.last_name}}</h3>
-        <h4>{{booking.phone}}</h4>
-        <h4>{{booking.email}}</h4>
-        <h4>{{booking.num_participants}}</h4>
-        <a href="{{ url_for('payments.payment_show', id=booking.id) }}">Payment details</a>
-        <br><br><br>
-    {% endfor %}
+<br/>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ref.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Riders</th>
+            <th scope="col">Date</th>
+            <th scope="col">OutTime</th>
+            <th scope="col">InTime</th>
+            <th scope="col">$$$</th>
+            <th scope="col">Paid</th>            
+          </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr onclick="">
+                <th scope="row">{{booking.id}}</th>
+                <td>{{booking.first_name}} {{booking.last_name}}</td>
+                <td>{{booking.phone}}</td>
+                <td>{{booking.email}}</td>
+                <td>{{booking.num_participants}}</td>
+                <td>{{booking.booking_date}}</td>
+                <td>{{booking.collection_time}}</td>
+                <td>{{booking.return_time}}</td>
+                <td>@total</td>
+                <td>@paid_status</td>
+            </tr>
+            {% endfor %}
+        </tbody>
 {% endblock %}
