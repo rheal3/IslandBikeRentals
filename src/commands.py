@@ -20,24 +20,24 @@ def seed_db():
     from models.Payment import Payment
 
     b1 = Booking()
-    b1.first_name = "Dill"
-    b1.last_name = "Frumbar"
+    b1.first_name = "a"
+    b1.last_name = "a"
     b1.phone = "123456789"
-    b1.email = "dillyf@email.com"
+    b1.email = "aa@email.com"
     b1.num_participants = 3
-    b1.booking_date = "2021-02-20"
+    b1.booking_date = "2021-03-20"
     b1.collection_time = "08:00:00"
     b1.return_time = "17:00:00"
     
     db.session.add(b1)
     
     b2 = Booking()
-    b2.first_name = "Aticus"
-    b2.last_name = "Drotfind"
+    b2.first_name = "b"
+    b2.last_name = "b"
     b2.phone = "987654321"
-    b2.email = "aticusd@email.com"
+    b2.email = "bb@email.com"
     b2.num_participants = 2
-    b2.booking_date = "2021-02-20"
+    b2.booking_date = "2021-03-21"
     b2.collection_time = "10:00:00"
     b2.return_time = "15:00:00"
     
@@ -46,15 +46,15 @@ def seed_db():
     db.session.commit()
 
     p1 = Payment()
-    p1.full_amount_due = 150.00
+    p1.full_amount_due = 210.00
     p1.upfront_amount_paid = "deposit"
-    p1.remainder_due = 100.00
+    p1.remainder_due = 160.00
     p1.booking_id = 1
 
     db.session.add(p1)
 
     p2 = Payment()
-    p2.full_amount_due = 120.00
+    p2.full_amount_due = 140.00
     p2.upfront_amount_paid = "full"
     p2.remainder_due = 0.00
     p2.booking_id = 2

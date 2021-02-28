@@ -9,17 +9,17 @@ rent = Blueprint("rent", __name__, url_prefix="/rent")
 
 # redirect from "/rent" to "/rent/payment" to "/rent/success"
 
-def total_due(rt, ct):
+def total_due(rt, ct, np):
     time = int(rt[:2]) - int(ct[:2])
     print(time)
     if time == 1:
-        return "20.00"
+        return str(20 * int(np))
     elif time == 2:
-        return "30.00"
+        return str(30 * int(np))
     elif time == 3:
-        return "40.00"
+        return str(40 * int(np))
     else:
-        return "70.00"
+        return str(70 * int(np))
 
 
 
@@ -55,29 +55,34 @@ def booking_create():
         db.session.add(new_booking)
         db.session.commit()
 
-        amt_due = total_due(return_time, collection_time)
+        amt_due = total_due(return_time, collection_time, num_participants) 
 
         return redirect(url_for("rent.booking_payment", amt_due=amt_due, id=new_booking.id))
     return render_template("rental_form.html")
 
 @rent.route("/payment", methods=["POST", "GET"])
 def booking_payment():
+    amt_due = request.args.get("amt_due")
+    id = request.args.get("id")
+    booking = Booking.query.get(id)
+
     if request.method == "POST":
-
-        # payment_fields = payment_schema.load(request.json)
-
         new_payment = Payment()
         new_payment.full_amount_due = float(request.form.get("full_amount_due"))
-        new_payment.upfront_amount_paid = "full"
-        new_payment.remainder_due = 0
+        new_payment.upfront_amount_paid = request.form.get("upfront_amount_paid")
+        
+        if new_payment.upfront_amount_paid == "full":
+            new_payment.remainder_due = 0
+        elif new_payment.upfront_amount_paid == "deposit":
+            new_payment.remainder_due = new_payment.full_amount_due - 50
+        
         new_payment.booking_id = request.form.get("booking_id")
         db.session.add(new_payment)
         db.session.commit()
-        # return jsonify(payment_schema.dump(new_payment))
+
         return redirect(url_for("rent.booking_success"))
-    amt_due = request.args.get("amt_due")
-    id = request.args.get("id")
-    return render_template("payment_form.html", amt_due=amt_due, id=id)
+
+    return render_template("payment_form.html", amt_due=amt_due, id=id, booking=booking)
 
 @rent.route("/success", methods=["GET"])
 def booking_success():
