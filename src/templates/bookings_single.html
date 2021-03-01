@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br/>
+
+<h3>REFERENCE: {{booking.id}}</h3>
+
+<h3>PERSONAL DETAILS</h3>
+    <p>Name: {{booking.first_name}} {{booking.last_name}}</p>
+    <p>Phone: {{booking.phone}}</p>
+    <p>Email: {{booking.email}}</p>
+
+<h3>BOOKING DETAILS</h3>
+    <p>Num. Participants: {{booking.num_participants}}</p>
+    <p>Date: {{booking.booking_date}}</p>
+    <p>Collection Time: {{booking.collection_time}}</p>
+    <p>Return Time: {{booking.return_time}}</p>
+
+<h3>PAYMENT DETAILS</h3>
+    <p>Full Amount Due: ${{payment.full_amount_due}}.00</p>
+    <p>Upfront Amount Paid: {{payment.upfront_amount_paid}}</p>
+    <p>Remainder Due: ${{payment.remainder_due}}.00</p>
+
+<a href="/bookings/">Back</a>
+{% endblock %}
