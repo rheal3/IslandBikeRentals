@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="text-center">
+    <h1>BOOKING SUCCESS</h1>
+    <h6>We look forward to seeing you!</h6>
+    <br/>
+    <h4>Reference Number: {{booking.id}}</h3>
+    <br/>
+    <p>A copy of your receipt has been emailed to you at: {{booking.email}}</p>
+    <br/>
+    <p>To make any changes or cancel your booking please call ##########</p>
+</div>
+{% endblock %}

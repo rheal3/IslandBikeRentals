@@ -4,6 +4,7 @@ from schemas.BookingSchema import booking_schema, bookings_schema
 from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for
+from sqlalchemy import exists
 
 rent = Blueprint("rent", __name__, url_prefix="/rent")
 
@@ -52,7 +53,7 @@ def booking_create():
         new_booking.collection_time = collection_time
         new_booking.return_time = return_time
 
-        db.session.add(new_booking)
+        db.session.add(new_payment)
         db.session.commit()
 
         amt_due = total_due(return_time, collection_time, num_participants) 
@@ -77,8 +78,11 @@ def booking_payment():
             new_payment.remainder_due = new_payment.full_amount_due - 50
         
         new_payment.booking_id = request.form.get("booking_id")
-        db.session.add(new_payment)
-        db.session.commit()
+        
+        (ret, ),  = db.session.query(exists().where(Payment.booking_id==new_payment.booking_id))
+        if not ret:
+            db.session.add(new_payment)
+            db.session.commit()
 
         return redirect(url_for("rent.booking_success"))
 
@@ -86,4 +90,6 @@ def booking_payment():
 
 @rent.route("/success", methods=["GET"])
 def booking_success():
-    return "SUCCESS"
+    booking = Booking.query.order_by(Booking.id.desc()).first()
+    payment = Payment.query.filter_by(id=booking.id).first()
+    return render_template("rent_success.html", booking=booking, payment=payment)
