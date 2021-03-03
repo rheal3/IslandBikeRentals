@@ -26,8 +26,8 @@ def seed_db():
     b1.email = "aa@email.com"
     b1.num_participants = 3
     b1.booking_date = "2021-03-20"
-    b1.collection_time = "08:00:00"
-    b1.return_time = "17:00:00"
+    b1.collection_time = "08:00"
+    b1.return_time = "17:00"
     
     db.session.add(b1)
     
@@ -38,8 +38,8 @@ def seed_db():
     b2.email = "bb@email.com"
     b2.num_participants = 2
     b2.booking_date = "2021-03-21"
-    b2.collection_time = "10:00:00"
-    b2.return_time = "15:00:00"
+    b2.collection_time = "10:00"
+    b2.return_time = "15:00"
     
     db.session.add(b2)
 
