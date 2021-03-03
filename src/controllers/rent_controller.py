@@ -53,7 +53,7 @@ def booking_create():
         new_booking.collection_time = collection_time
         new_booking.return_time = return_time
 
-        db.session.add(new_payment)
+        db.session.add(new_booking)
         db.session.commit()
 
         amt_due = total_due(return_time, collection_time, num_participants) 

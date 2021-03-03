@@ -61,7 +61,7 @@ def booking_update(id):
         booking.collection_time = request.form.get("collection_time")
         booking.return_time = request.form.get("return_time")
 
-        if request.form.get("rental_complete") == True:
+        if request.form.get("rental_complete") == "True":
             booking.rental_complete = True
         else:
             booking.rental_complete = False
