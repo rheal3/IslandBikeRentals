@@ -20,7 +20,6 @@
     <tbody>
         {% for booking in bookings %}
         {% if booking.booking_date >= today and booking.rental_complete == False %}
-        <p>{{booking.rental_complete}}</p>
             <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
                 <th scope="row">{{booking.id}}</th>
                 <td>{{booking.first_name}} {{booking.last_name}}</td>
