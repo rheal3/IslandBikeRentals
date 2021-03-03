@@ -128,7 +128,7 @@ This project was managed through Notion.
 - [T4A2-B](https://www.notion.so/2e265d85058c4f4294840492f8e12cd4?v=8a146125c84a4eadbd150c974caad7af)
 
 Note: All tasks were assigned to myself as I was the only person working on this project. :)
-
+### T4A2 Part A
 **11 February 2021**
 ![](./docs/notion/2021-02-11.png)
 **12 February 2021**
@@ -145,3 +145,16 @@ Note: All tasks were assigned to myself as I was the only person working on this
 ![](./docs/notion/2021-02-18.png)
 **19 February 2021**
 ![](./docs/notion/2021-02-19.png)
+
+### T4A2 Part B
+**25-27 February 2021**  
+Due to illness I did not get much done, though I was able to deploy my app using Heroku!  
+
+**01 March 2021**
+![](./docs/notion/2021-03-01.png)
+**02 March 2021**
+![](./docs/notion/2021-03-02.png)
+**03 March 2021**
+![](./docs/notion/2021-03-03.png)
+![](./docs/notion/2021-03-03_status-start.png)
+![](./docs/notion/2021-03-03_status-end.png)
