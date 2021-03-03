@@ -2,9 +2,9 @@
 
 {% block content%}        
 <br/>
-    <table class="table table-hover text-center">
-        <thead>
-          <tr>
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
             <th scope="col">Ref.</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
@@ -15,10 +15,12 @@
             <th scope="col">InTime</th>
             <th scope="col">$$$</th>
             <th scope="col">Paid</th>            
-          </tr>
-        </thead>
-        <tbody>
-            {% for booking in bookings %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        {% if booking.booking_date >= today and booking.rental_complete == False %}
+        <p>{{booking.rental_complete}}</p>
             <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
                 <th scope="row">{{booking.id}}</th>
                 <td>{{booking.first_name}} {{booking.last_name}}</td>
@@ -29,14 +31,59 @@
                 <td>{{booking.collection_time}}</td>
                 <td>{{booking.return_time}}</td>
                 {% for payment in payments %}
-                {% if payment.booking_id == booking.id %}
-                  <td>${{payment.full_amount_due}}</td>
-                  {% if payment.remainder_due == 0 %}
-                  <td><span>&#10003;</span></td>
-                  {% endif %}
-                {% endif %}
+                    {% if payment.booking_id == booking.id %}
+                        <td>${{payment.full_amount_due}}</td>
+                        {% if payment.remainder_due == 0 %}
+                        <td><span>&#10003;</span></td>
+                        {% endif %}
+                    {% endif %}
                 {% endfor %}
             </tr>
-            {% endfor %}
-        </tbody>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+<br/>
+<br/>
+<h3>Archive</h3>
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Ref.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Riders</th>
+            <th scope="col">Date</th>
+            <th scope="col">OutTime</th>
+            <th scope="col">InTime</th>
+            <th scope="col">$$$</th>
+            <th scope="col">Paid</th>            
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        {% if booking.booking_date < today or booking.rental_complete == True %}
+            <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
+                <th scope="row">{{booking.id}}</th>
+                <td>{{booking.first_name}} {{booking.last_name}}</td>
+                <td>{{booking.phone}}</td>
+                <td>{{booking.email}}</td>
+                <td>{{booking.num_participants}}</td>
+                <td>{{booking.booking_date}}</td>
+                <td>{{booking.collection_time}}</td>
+                <td>{{booking.return_time}}</td>
+                {% for payment in payments %}
+                    {% if payment.booking_id == booking.id %}
+                        <td>${{payment.full_amount_due}}</td>
+                        {% if payment.remainder_due == 0 %}
+                        <td><span>&#10003;</span></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

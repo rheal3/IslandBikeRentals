@@ -6,6 +6,7 @@ from main import db
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from sqlalchemy.orm import joinedload
 from flask_login import login_required, current_user
+from datetime import date
 
 bookings = Blueprint("bookings", __name__, url_prefix="/bookings")
 
@@ -15,9 +16,10 @@ def booking_index():
     """
     Returns index of all bookings.
     """
+    today = str(date.today())
     bookings = Booking.query.order_by(Booking.booking_date.asc()).all()
     payments = Payment.query.all()
-    return render_template("bookings_index.html", bookings=bookings, payments=payments)    
+    return render_template("bookings_index.html", bookings=bookings, payments=payments, today=today)    
 
 @bookings.route("/<int:id>", methods=["POST", "GET"])
 @login_required
@@ -84,4 +86,6 @@ def booking_update(id):
 
     booking = Booking.query.get(id)
     payment = Payment.query.filter_by(booking_id=id).first()
-    return render_template("booking_update.html", booking=booking, payment=payment)
+    booking_date = booking.booking_date.split("-")
+    date = {"month": booking_date[1], "day": booking_date[2], "year": booking_date[0]}
+    return render_template("booking_update.html", booking=booking, payment=payment, date=date)

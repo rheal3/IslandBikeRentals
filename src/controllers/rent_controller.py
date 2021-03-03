@@ -54,6 +54,9 @@ def booking_create():
 
         amt_due = total_due(return_time, collection_time, num_participants) 
 
+        db.session.add(new_booking)
+        db.session.commit()
+
         return redirect(url_for("rent.booking_payment", amt_due=amt_due, id=new_booking.id))
     return render_template("rental_form.html")
 
