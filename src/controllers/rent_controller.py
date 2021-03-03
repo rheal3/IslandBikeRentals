@@ -12,7 +12,6 @@ rent = Blueprint("rent", __name__, url_prefix="/rent")
 
 def total_due(rt, ct, np):
     time = int(rt[:2]) - int(ct[:2])
-    print(time)
     if time == 1:
         return str(20 * int(np))
     elif time == 2:
@@ -52,9 +51,6 @@ def booking_create():
         new_booking.booking_date = f"{year}-{month}-{day}"
         new_booking.collection_time = collection_time
         new_booking.return_time = return_time
-
-        db.session.add(new_booking)
-        db.session.commit()
 
         amt_due = total_due(return_time, collection_time, num_participants) 
 

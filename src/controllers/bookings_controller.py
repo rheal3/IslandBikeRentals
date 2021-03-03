@@ -5,11 +5,12 @@ from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from sqlalchemy.orm import joinedload
-
+from flask_login import login_required, current_user
 
 bookings = Blueprint("bookings", __name__, url_prefix="/bookings")
 
 @bookings.route("/", methods=["GET"])
+@login_required
 def booking_index():
     """
     Returns index of all bookings.
@@ -19,6 +20,7 @@ def booking_index():
     return render_template("bookings_index.html", bookings=bookings, payments=payments)    
 
 @bookings.route("/<int:id>", methods=["POST", "GET"])
+@login_required
 def booking_show(id):
     """
     Show data for single booking using id.
@@ -28,6 +30,7 @@ def booking_show(id):
     return render_template("bookings_single.html", booking=booking, payment=payment)
 
 @bookings.route("/<int:id>/delete", methods=["GET", "DELETE"])
+@login_required
 def booking_delete(id):
     """
     Delete data for single booking using id.
@@ -42,6 +45,7 @@ def booking_delete(id):
     return redirect(url_for('bookings.booking_index'))
 
 @bookings.route("/<int:id>/update", methods=["POST", "GET"])
+@login_required
 def booking_update(id):
     """
     Update booking using id.
