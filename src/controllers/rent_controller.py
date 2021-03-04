@@ -5,6 +5,7 @@ from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from sqlalchemy import exists
+from services.email_receipt import send_email
 
 rent = Blueprint("rent", __name__, url_prefix="/rent")
 
@@ -91,4 +92,5 @@ def booking_payment():
 def booking_success():
     booking = Booking.query.order_by(Booking.id.desc()).first()
     payment = Payment.query.filter_by(id=booking.id).first()
+    send_email(booking, payment)
     return render_template("rent_success.html", booking=booking, payment=payment)
