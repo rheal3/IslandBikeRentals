@@ -14,6 +14,7 @@ bcrypt = Bcrypt()
 login_manager = LoginManager()
 # migrate = Migrate()
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object("settings.app_config")
@@ -25,8 +26,9 @@ def create_app():
     login_manager.login_view = "auth.login"
 
     # migrate.init_app(app, db)
-    
+
     from models.User import get_user
+
     @login_manager.user_loader
     def load_user(user_id):
         return get_user(user_id)
@@ -37,6 +39,5 @@ def create_app():
     from controllers import registerable_controllers
     for controller in registerable_controllers:
         app.register_blueprint(controller)
-    
 
     return app

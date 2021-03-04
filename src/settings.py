@@ -1,5 +1,6 @@
 import os
 
+
 class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.getenv("SECRET_KEY")
@@ -10,14 +11,17 @@ class Config(object):
 
         if not value:
             raise ValueError("DATABASE_URL is not set!")
-        
+
         return value
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
+
 class ProductionConfig(Config):
     pass
+
 
 class TestingConfig(Config):
     TESTING = True
@@ -28,8 +32,9 @@ class TestingConfig(Config):
 
         if not value:
             raise ValueError("DB_URI_TEST is not set!")
-        
+
         return value
+
 
 environment = os.getenv("FLASK_ENV")
 

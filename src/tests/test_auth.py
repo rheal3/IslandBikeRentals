@@ -3,6 +3,7 @@ import os
 from models.User import User
 from main import create_app, db, bcrypt
 
+
 class TestAuth(unittest.TestCase):
     @classmethod
     def setUp(cls):
@@ -23,7 +24,7 @@ class TestAuth(unittest.TestCase):
         db.drop_all()
         cls.app_context.pop()
 
-    # test the POST method in /auth/register 
+    # test the POST method in /auth/register
     def test_register(self):
         login_data = {
             'username': 'tester',
@@ -31,22 +32,21 @@ class TestAuth(unittest.TestCase):
         }
 
         response = self.client.post('/auth/register', data=login_data)
-        data = response.get_json()
 
         user = User.query.filter_by(username=login_data["username"]).first()
 
         # check the OK status
         self.assertEqual(response.status_code, 302)
 
-        #test there's some data in the response
+        # test data is in response
         self.assertIsNotNone(user)
 
         # test html contains changed data from updated booking
         self.assertEqual(login_data["username"], user.username)
-        self.assertTrue(bcrypt.check_password_hash(user.password, login_data["password"]))
+        self.assertTrue(bcrypt.check_password_hash(user.password,
+                        login_data["password"]))
 
-
-    # test the POST method in /auth/login 
+    # test the POST method in /auth/login
     def test_login(self):
         login_data = {
             'username': 'tester@email.com',
@@ -54,13 +54,8 @@ class TestAuth(unittest.TestCase):
         }
         response = self.client.post('/auth/register', data=login_data)
 
-        response = self.client.post('/auth/login', data=login_data, follow_redirects=True)
-        data = response.get_json()
+        response = self.client.post('/auth/login', data=login_data,
+                                    follow_redirects=True)
 
         # check the OK status
         self.assertEqual(response.status_code, 200)
-
-
-
-
-

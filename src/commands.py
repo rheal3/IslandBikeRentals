@@ -3,10 +3,12 @@ from flask import Blueprint
 
 db_commands = Blueprint("db-custom", __name__)
 
+
 @db_commands.cli.command("create")
 def create_db():
     db.create_all()
     print("Tables created!")
+
 
 @db_commands.cli.command("drop")
 def drop_db():
@@ -14,12 +16,12 @@ def drop_db():
     db.engine.execute("DROP TABLE IF EXISTS alembic_version cascade;")
     print("Tables deleted")
 
+
 @db_commands.cli.command("seed")
 def seed_db():
     from models.Booking import Booking
     from models.Payment import Payment
     from models.User import User
-    import os
     from main import bcrypt
 
     u1 = User()
@@ -37,9 +39,9 @@ def seed_db():
     b1.booking_date = "2021-03-20"
     b1.collection_time = "08:00"
     b1.return_time = "17:00"
-    
+
     db.session.add(b1)
-    
+
     b2 = Booking()
     b2.first_name = "b"
     b2.last_name = "b"
@@ -49,7 +51,7 @@ def seed_db():
     b2.booking_date = "2021-03-21"
     b2.collection_time = "10:00"
     b2.return_time = "15:00"
-    
+
     db.session.add(b2)
 
     db.session.commit()
