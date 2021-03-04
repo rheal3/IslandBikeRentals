@@ -158,3 +158,5 @@ Due to illness I did not get much done, though I was able to deploy my app using
 ![](./docs/notion/2021-03-03.png)
 ![](./docs/notion/2021-03-03_status-start.png)
 ![](./docs/notion/2021-03-03_status-end.png)
+**04 March 2021**
+![](./docs/notion/2021-03-04.png)
