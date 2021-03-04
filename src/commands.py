@@ -18,6 +18,15 @@ def drop_db():
 def seed_db():
     from models.Booking import Booking
     from models.Payment import Payment
+    from models.User import User
+    import os
+    from main import bcrypt
+
+    u1 = User()
+    u1.username = "admin"
+    u1.password = bcrypt.generate_password_hash("nimda").decode("utf-8")
+    db.session.add(u1)
+    db.session.commit()
 
     b1 = Booking()
     b1.first_name = "a"
@@ -58,7 +67,6 @@ def seed_db():
     p2.upfront_amount_paid = "full"
     p2.remainder_due = 0.00
     p2.booking_id = 2
-
 
     db.session.add(p2)
 
