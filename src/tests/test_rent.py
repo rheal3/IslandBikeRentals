@@ -4,7 +4,8 @@ from models.Booking import Booking
 from models.Payment import Payment
 from main import create_app, db
 
-class TestBookings(unittest.TestCase):
+
+class TestRent(unittest.TestCase):
     @classmethod
     def setUp(cls):
         if os.environ.get("FLASK_ENV") != "testing":
