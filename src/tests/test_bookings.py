@@ -125,8 +125,8 @@ class TestBookings(unittest.TestCase):
         response = self.client.post(f"/bookings/{booking.id}/update", data=booking_data)
         data = response.get_json()
 
-         # check the OK status
-        # self.assertEqual(response.status_code, 200)
+        # check the OK status
+        self.assertEqual(response.status_code, 302)
 
         # test html contains changed data from updated booking
         self.assertEqual(booking.first_name, booking_data["first_name"])
