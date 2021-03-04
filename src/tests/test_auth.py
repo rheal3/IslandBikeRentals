@@ -26,14 +26,14 @@ class TestAuth(unittest.TestCase):
     # test the POST method in /auth/register 
     def test_register(self):
         login_data = {
-            'username': 'tester@email.com',
+            'username': 'tester',
             'password': '123456'
         }
 
         response = self.client.post('/auth/register', data=login_data)
         data = response.get_json()
 
-        user = User.query.first()
+        user = User.query.filter_by(username=login_data["username"]).first()
 
         # check the OK status
         self.assertEqual(response.status_code, 302)
