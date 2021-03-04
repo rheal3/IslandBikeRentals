@@ -6,6 +6,5 @@ from controllers.payments_controller import payments
 registerable_controllers = [
     auth,
     bookings,
-    rent,
-    payments
+    rent
 ]
