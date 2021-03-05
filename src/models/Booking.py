@@ -1,5 +1,6 @@
 from main import db
 
+
 class Booking(db.Model):
     __tablename__ = "bookings"
 
@@ -14,6 +15,5 @@ class Booking(db.Model):
     return_time = db.Column(db.String, nullable=False)
     rental_complete = db.Column(db.Boolean, default=False)
 
-    payment = db.relationship("Payment", backref="booking", cascade="all, delete")
-
-    # payment_id = db.Column(db.Integer, db.ForeignKey("payments.id"), nullable=False)
+    payment = db.relationship("Payment", backref="booking",
+                              cascade="all, delete")

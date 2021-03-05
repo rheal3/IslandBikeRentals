@@ -3,13 +3,14 @@ from models.Payment import Payment
 from schemas.BookingSchema import booking_schema, bookings_schema
 from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
-from flask import Blueprint, request, jsonify, render_template, redirect, url_for
+from flask import Blueprint, request, render_template, redirect, url_for
 from sqlalchemy import exists
 from services.email_receipt import send_email
 
 rent = Blueprint("rent", __name__, url_prefix="/rent")
 
 # redirect from "/rent" to "/rent/payment" to "/rent/success"
+
 
 def total_due(rt, ct, np):
     time = int(rt[:2]) - int(ct[:2])
@@ -21,7 +22,6 @@ def total_due(rt, ct, np):
         return str(40 * int(np))
     else:
         return str(70 * int(np))
-
 
 
 @rent.route("/", methods=["POST", "GET"])
@@ -41,8 +41,6 @@ def booking_create():
         email = request.form.get("email")
         phone = request.form.get("phone")
 
-        # booking_fields = booking_schema.load(request.json)
-
         new_booking = Booking()
         new_booking.first_name = first_name
         new_booking.last_name = last_name
@@ -53,13 +51,16 @@ def booking_create():
         new_booking.collection_time = collection_time
         new_booking.return_time = return_time
 
-        amt_due = total_due(return_time, collection_time, num_participants) 
+        amt_due = total_due(return_time, collection_time,
+                            num_participants)
 
         db.session.add(new_booking)
         db.session.commit()
 
-        return redirect(url_for("rent.booking_payment", amt_due=amt_due, id=new_booking.id))
+        return redirect(url_for("rent.booking_payment", amt_due=amt_due,
+                                id=new_booking.id))
     return render_template("rental_form.html")
+
 
 @rent.route("/payment", methods=["POST", "GET"])
 def booking_payment():
@@ -69,28 +70,34 @@ def booking_payment():
 
     if request.method == "POST":
         new_payment = Payment()
-        new_payment.full_amount_due = float(request.form.get("full_amount_due"))
-        new_payment.upfront_amount_paid = request.form.get("upfront_amount_paid")
-        
+        new_payment.full_amount_due = float(request.form.get(
+                                            "full_amount_due"))
+        new_payment.upfront_amount_paid = request.form.get(
+                                            "upfront_amount_paid")
+
         if new_payment.upfront_amount_paid == "full":
             new_payment.remainder_due = 0
         elif new_payment.upfront_amount_paid == "deposit":
             new_payment.remainder_due = new_payment.full_amount_due - 50
-        
+
         new_payment.booking_id = request.form.get("booking_id")
-        
-        (ret, ),  = db.session.query(exists().where(Payment.booking_id==new_payment.booking_id))
+
+        (ret, ),  = db.session.query(exists().where(
+                    Payment.booking_id == new_payment.booking_id))
         if not ret:
             db.session.add(new_payment)
             db.session.commit()
 
         return redirect(url_for("rent.booking_success"))
 
-    return render_template("payment_form.html", amt_due=amt_due, id=id, booking=booking)
+    return render_template("payment_form.html", amt_due=amt_due, id=id,
+                           booking=booking)
+
 
 @rent.route("/success", methods=["GET"])
 def booking_success():
     booking = Booking.query.order_by(Booking.id.desc()).first()
     payment = Payment.query.filter_by(id=booking.id).first()
     send_email(booking, payment)
-    return render_template("rent_success.html", booking=booking, payment=payment)
+    return render_template("rent_success.html", booking=booking,
+                           payment=payment)

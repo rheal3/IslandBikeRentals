@@ -1,4 +1,4 @@
-from main import db, login_manager
+from main import db
 from flask_login import UserMixin
 
 
