@@ -1,7 +1,5 @@
 from models.Booking import Booking
 from models.Payment import Payment
-from schemas.BookingSchema import booking_schema, bookings_schema
-from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
 from flask import Blueprint, request, render_template, redirect, url_for
 from sqlalchemy import exists
@@ -30,29 +28,23 @@ def booking_create():
     Create a new booking.
     """
     if request.method == "POST":
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
-        num_participants = request.form.get("num_participants")
         month = request.form.get("month")
         day = request.form.get("day")
         year = request.form.get("year")
-        collection_time = request.form.get("collection_time")
-        return_time = request.form.get("return_time")
-        email = request.form.get("email")
-        phone = request.form.get("phone")
 
         new_booking = Booking()
-        new_booking.first_name = first_name
-        new_booking.last_name = last_name
-        new_booking.phone = phone
-        new_booking.email = email
-        new_booking.num_participants = num_participants
+        new_booking.first_name = request.form.get("first_name")
+        new_booking.last_name = request.form.get("last_name")
+        new_booking.phone = request.form.get("phone")
+        new_booking.email = request.form.get("email")
+        new_booking.num_participants = request.form.get("num_participants")
         new_booking.booking_date = f"{year}-{month}-{day}"
-        new_booking.collection_time = collection_time
-        new_booking.return_time = return_time
+        new_booking.collection_time = request.form.get("collection_time")
+        new_booking.return_time = request.form.get("return_time")
 
-        amt_due = total_due(return_time, collection_time,
-                            num_participants)
+        amt_due = total_due(new_booking.return_time,
+                            new_booking.collection_time,
+                            new_booking.num_participants)
 
         db.session.add(new_booking)
         db.session.commit()
