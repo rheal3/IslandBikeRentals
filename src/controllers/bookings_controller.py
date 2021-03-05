@@ -1,14 +1,12 @@
 from models.Booking import Booking
 from models.Payment import Payment
-from schemas.BookingSchema import booking_schema, bookings_schema
-from schemas.PaymentSchema import payment_schema, payments_schema
 from main import db
-from flask import Blueprint, request, jsonify, render_template, redirect, url_for
-from sqlalchemy.orm import joinedload
-from flask_login import login_required, current_user
+from flask import Blueprint, request, render_template, redirect, url_for
+from flask_login import login_required
 from datetime import date
 
 bookings = Blueprint("bookings", __name__, url_prefix="/bookings")
+
 
 @bookings.route("/", methods=["GET"])
 @login_required
@@ -19,7 +17,9 @@ def booking_index():
     today = str(date.today())
     bookings = Booking.query.order_by(Booking.booking_date.asc()).all()
     payments = Payment.query.all()
-    return render_template("bookings_index.html", bookings=bookings, payments=payments, today=today)    
+    return render_template("bookings_index.html", bookings=bookings,
+                           payments=payments, today=today)
+
 
 @bookings.route("/<int:id>", methods=["POST", "GET"])
 @login_required
@@ -29,7 +29,9 @@ def booking_show(id):
     """
     booking = Booking.query.get(id)
     payment = Payment.query.filter_by(booking_id=id).first()
-    return render_template("bookings_single.html", booking=booking, payment=payment)
+    return render_template("bookings_single.html", booking=booking,
+                           payment=payment)
+
 
 @bookings.route("/<int:id>/delete", methods=["GET", "DELETE"])
 @login_required
@@ -45,6 +47,7 @@ def booking_delete(id):
     db.session.delete(payment)
     db.session.commit()
     return redirect(url_for('bookings.booking_index'))
+
 
 @bookings.route("/<int:id>/update", methods=["POST", "GET"])
 @login_required
@@ -87,5 +90,7 @@ def booking_update(id):
     booking = Booking.query.get(id)
     payment = Payment.query.filter_by(booking_id=id).first()
     booking_date = booking.booking_date.split("-")
-    date = {"month": booking_date[1], "day": booking_date[2], "year": booking_date[0]}
-    return render_template("booking_update.html", booking=booking, payment=payment, date=date)
+    date = {"month": booking_date[1], "day": booking_date[2],
+            "year": booking_date[0]}
+    return render_template("booking_update.html", booking=booking,
+                           payment=payment, date=date)

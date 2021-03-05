@@ -1,6 +1,7 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, render_template
 
 home = Blueprint("home", __name__, url_prefix="/")
+
 
 @home.route("/", methods=["GET"])
 def home_page():

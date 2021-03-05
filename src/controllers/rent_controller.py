@@ -65,7 +65,7 @@ def booking_payment():
         new_payment.full_amount_due = float(request.form.get(
                                             "full_amount_due"))
         new_payment.upfront_amount_paid = request.form.get(
-                                            "upfront_amount_paid")
+            "upfront_amount_paid")
 
         if new_payment.upfront_amount_paid == "full":
             new_payment.remainder_due = 0
@@ -74,8 +74,8 @@ def booking_payment():
 
         new_payment.booking_id = request.form.get("booking_id")
 
-        (ret, ),  = db.session.query(exists().where(
-                    Payment.booking_id == new_payment.booking_id))
+        (ret, ), = db.session.query(exists().where(
+            Payment.booking_id == new_payment.booking_id))
         if not ret:
             db.session.add(new_payment)
             db.session.commit()
