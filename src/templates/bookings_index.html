@@ -20,7 +20,8 @@
     <tbody>
         {% for booking in bookings %}
         {% if booking.booking_date >= today and booking.rental_complete == False %}
-            <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
+            {% if booking.booking_date == today %}
+            <tr class="clickable text-center table-warning" onclick="window.location='/bookings/{{booking.id}}'">
                 <th scope="row">{{booking.id}}</th>
                 <td>{{booking.first_name}} {{booking.last_name}}</td>
                 <td>{{booking.phone}}</td>
@@ -38,6 +39,26 @@
                     {% endif %}
                 {% endfor %}
             </tr>
+            {% else %}
+            <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'">
+                <th scope="row">{{booking.id}}</th>
+                <td>{{booking.first_name}} {{booking.last_name}}</td>
+                <td>{{booking.phone}}</td>
+                <td>{{booking.email}}</td>
+                <td>{{booking.num_participants}}</td>
+                <td>{{booking.booking_date}}</td>
+                <td>{{booking.collection_time}}</td>
+                <td>{{booking.return_time}}</td>
+                {% for payment in payments %}
+                    {% if payment.booking_id == booking.id %}
+                        <td>${{payment.full_amount_due}}</td>
+                        {% if payment.remainder_due == 0 %}
+                        <td><span>&#10003;</span></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endif%}
         {% endif %}
         {% endfor %}
     </tbody>
@@ -63,7 +84,8 @@
     <tbody>
         {% for booking in bookings %}
         {% if booking.booking_date < today or booking.rental_complete == True %}
-            <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
+            {% if booking.rental_complete != True %}
+            <tr class="clickable text-center table-danger" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
                 <th scope="row">{{booking.id}}</th>
                 <td>{{booking.first_name}} {{booking.last_name}}</td>
                 <td>{{booking.phone}}</td>
@@ -81,6 +103,26 @@
                     {% endif %}
                 {% endfor %}
             </tr>
+            {% else %}
+            <tr class="clickable text-center" onclick="window.location='/bookings/{{booking.id}}'"><a href=""></a>
+                <th scope="row">{{booking.id}}</th>
+                <td>{{booking.first_name}} {{booking.last_name}}</td>
+                <td>{{booking.phone}}</td>
+                <td>{{booking.email}}</td>
+                <td>{{booking.num_participants}}</td>
+                <td>{{booking.booking_date}}</td>
+                <td>{{booking.collection_time}}</td>
+                <td>{{booking.return_time}}</td>
+                {% for payment in payments %}
+                    {% if payment.booking_id == booking.id %}
+                        <td>${{payment.full_amount_due}}</td>
+                        {% if payment.remainder_due == 0 %}
+                        <td><span>&#10003;</span></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>            
+            {% endif %}
         {% endif %}
         {% endfor %}
     </tbody>
