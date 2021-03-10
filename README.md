@@ -4,6 +4,9 @@ Island Bike Rentals is a holiday goers dream come true. The Super73 Electric Bik
 
 ![](docs/images/super73.png)
 
+[GITHUB REPO](https://github.com/rheal3/IslandBikeRentals)  
+[DEPLOYED WEBSITE](http://www.islandbikerentals.tk/)
+
 ## How It Works
 1. The customer creates a booking through the "RENT" button. 
 2. Once the personal details are filled out they can click to go the payment screen. Here the customer can then choose to pay the full amount then and there or pay a deposit. 
