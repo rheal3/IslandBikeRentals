@@ -27,6 +27,7 @@ This project was built with:
 ## User Stories
 See the exciting user stories [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/User-Stories).
 
+
 ## Wireframes
 See all wireframes [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/Wireframes).
 
@@ -43,6 +44,9 @@ This project was managed through Notion.
 - View Part A project management [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/Part-A-Project-Management)
 - View Part B project management [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/Part-B-Project-Management)
 
+
+## Testing
+- See more about testing [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/Testing)
 
 ## Use This For You
 If you would like to set this up on your own machine and personalize it to your business you can follow the instructions [HERE](https://github.com/rheal3/IslandBikeRentals/wiki/Set-Up)
