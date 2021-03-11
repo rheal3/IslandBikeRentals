@@ -46,11 +46,15 @@ def booking_create():
                             new_booking.collection_time,
                             new_booking.num_participants)
 
-        db.session.add(new_booking)
-        db.session.commit()
+        if len(new_booking.first_name
+               ) != 0 and len(new_booking.last_name
+                              ) != 0 and len(new_booking.email) != 0:
 
-        return redirect(url_for("rent.booking_payment", amt_due=amt_due,
-                                id=new_booking.id))
+            db.session.add(new_booking)
+            db.session.commit()
+
+            return redirect(url_for("rent.booking_payment", amt_due=amt_due,
+                                    id=new_booking.id))
     return render_template("rental_form.html")
 
 
