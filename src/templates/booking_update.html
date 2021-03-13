@@ -21,13 +21,9 @@
                 </div>
                 
                 <h4>BOOKING DETAILS</h4>
-                <div class="form-group">
+                <div class="form-inline form-group">
                     <label for="exampleFormControlSelect1">Number Of Participants</label>
-                    <select class="form-control" name="num_participants" value="{{ booking.num_participants }}" id="exampleFormControlSelect1">
-                        {% for i in range(1, 11) %}
-                        <option>{{i}}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="text" class="form-control" name="num_participants" value="{{ booking.num_participants }}" id="exampleFormControlInput1">
                 </div>
                     
                 <div class="form-inline form-group">
